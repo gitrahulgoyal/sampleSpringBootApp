@@ -42,7 +42,7 @@
                 <version>2.2.0</version>
                 <configuration>
                     <version>1</version>
-                    <projectId>Test-POC</projectId>
+                    <projectId>test-poc-348405</projectId>
                 </configuration>
             </plugin>
         </plugins>
