@@ -1,0 +1,44 @@
+#compute engine:
+apt-get install -yq openjdk-11-jdk git maven
+
+git clone https://github.com/gitrahulgoyal/sampleSpringBootApp.git
+
+mvn -DskipTests spring-boot:run
+
+#app-engine using mvn command
+
+gcloud config list project
+gcloud config set project <projectname>
+
+gcloud app create --region us-central 
+gcloud app create --project=<project>
+
+mvn -DskipTests package appengine:deploy
+
+gcloud app browse
+
+#app-engine using deploy command
+gcloud app deploy
+
+gcloud app deploy --version v2
+gcloud app deploy --no-promote --version v3
+gcloud app services set-traffic default --splits v1=1
+gcloud app services set-traffic default --splits v2=90,v3=10 --split-by random
+
+
+gcloud app deploy app_service2.yml --version=v1
+
+
+#cloud run
+docker build -t gcr.io/airy-ceremony-348417/testapp:v1 .
+docker push gcr.io/airy-ceremony-348417/testapp:v1
+
+https://cloud.google.com/java/getting-started/getting-started-on-compute-engine
+https://codelabs.developers.google.com/codelabs/cloud-app-engine-springboot#0
+https://cloud.google.com/appengine/docs/standard/java-gen2/testing-and-deploying-your-app?hl=en-GB
+https://cloud.google.com/java/
+https://cloud.google.com/appengine/docs/standard/java-gen2/config/appref
+https://gitlab.com/salimpadela/gcp-cloud-build-youtube/-/blob/master/cloudbuild.yaml
+https://www.youtube.com/watch?v=9vvS47MAFcA
+https://www.youtube.com/watch?v=hkiYkJbs0W4
+https://www.youtube.com/watch?v=jW_-KZCjsm0
