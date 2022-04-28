@@ -1,7 +1,7 @@
 steps:
 
   - name: 'gcr.io/cloud-builders/mvn'
-    args: ['clean', 'install']
+    args: ['clean', 'package', '-DskipTests']
 
   #build docker container
   - name: 'gcr.io/cloud-builders/docker'
