@@ -42,7 +42,7 @@
                 <version>2.2.0</version>
                 <configuration>
                     <version>1</version>
-                    <projectId>test-poc-348405</projectId>
+                    <projectId>GCLOUD_CONFIG</projectId>
                 </configuration>
             </plugin>
         </plugins>
