@@ -12,7 +12,7 @@ public class HelloController {
 
     @GetMapping("/")
     public String index() {
-        String val = System.getProperty("APP_NAME", "");
+        String val = System.getenv("APP_NAME");
         logger.info("APP Name" + val);
         logger.info("default api called");
         return "Welcome to our demo app " + val + "!";
