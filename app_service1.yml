@@ -1,0 +1,6 @@
+runtime: java11 # or another supported version
+instance_class: F1
+service: s1
+env_variables:
+  BUCKET_NAME: "test-app-rahul"
+  APP_NAME: "test-app1"
