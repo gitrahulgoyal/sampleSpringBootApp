@@ -10,7 +10,7 @@ mvn -DskipTests spring-boot:run
 gcloud config list project
 gcloud config set project <projectname>
 
-gcloud app create --region us-central 
+gcloud app create --region us-central
 gcloud app create --project=<project>
 
 mvn -DskipTests package appengine:deploy
@@ -30,8 +30,20 @@ gcloud app deploy app_service2.yml --version=v1
 
 
 #cloud run
-docker build -t gcr.io/airy-ceremony-348417/testapp:v1 .
-docker push gcr.io/airy-ceremony-348417/testapp:v1
+docker build -t gcr.io/$GOOGLE_CLOUD_PROJECT/testapp:v1 .
+docker push gcr.io/$GOOGLE_CLOUD_PROJECT/testapp:v1
+
+#Google Kubernetes GKE
+gcloud container clusters create
+gcloud container clusters get-credentials my-cluster --zone us-central1-c --project test-poc-123
+kubectl get services
+kubectl get pods
+kubectl get deployments
+kubectl create deployment test-app --image=gcr.io/$GOOGLE_CLOUD_PROJECT/testapp:v1 --port=8080
+or
+kubectl run deployment test-app --image=gcr.io/$GOOGLE_CLOUD_PROJECT/testapp:v1 --port=8080
+kubectl expose deployment test-app --type=LoadBalancer
+kubectl scale deployment test-app --replicas=3
 
 https://cloud.google.com/java/getting-started/getting-started-on-compute-engine
 https://codelabs.developers.google.com/codelabs/cloud-app-engine-springboot#0
@@ -42,3 +54,8 @@ https://gitlab.com/salimpadela/gcp-cloud-build-youtube/-/blob/master/cloudbuild.
 https://www.youtube.com/watch?v=9vvS47MAFcA
 https://www.youtube.com/watch?v=hkiYkJbs0W4
 https://www.youtube.com/watch?v=jW_-KZCjsm0
+
+Kubernetes
+https://www.youtube.com/watch?v=s_o8dwzRlu4 - quick introduction to Kubernetes
+https://www.youtube.com/watch?v=jW_-KZCjsm0 - deployment using gke (cloud made easy)
+https://www.youtube.com/watch?v=jSYxW_c3M_E - deployment using gke - using google image
